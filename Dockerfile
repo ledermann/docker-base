@@ -3,6 +3,15 @@ FROM ruby:2.3
 # Set time zone
 ENV TZ=Europe/Berlin
 
+## Set LOCALE to UTF8
+ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get update && apt-get install -y locales && \
+    echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    locale-gen en_US.UTF-8 && \
+    dpkg-reconfigure locales && \
+    /usr/sbin/update-locale LANG=en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
 # Install MySQL client
 # Source: http://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/#repo-qg-apt-repo-manual-setup
 RUN echo 'deb http://repo.mysql.com/apt/debian/ jessie mysql-5.7' > /etc/apt/sources.list.d/mysql.list && \
