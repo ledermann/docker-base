@@ -75,7 +75,3 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
-
-# Workdir
-RUN mkdir -p /home/app
-WORKDIR /home/app
