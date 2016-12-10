@@ -44,8 +44,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 
 ## Install Node.js
 # Source: https://github.com/nodejs/docker-node/blob/master/6.9/wheezy/Dockerfile
-RUN groupadd --gid 1000 node \
-  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+RUN groupadd -r node && useradd -r -g node node
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
