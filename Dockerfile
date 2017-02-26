@@ -34,7 +34,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
   	ln -sf /dev/stderr /var/log/nginx/error.log
 
 ## Install Node.js
-# Source: https://github.com/nodejs/docker-node/blob/master/6.9/wheezy/Dockerfile
+# Source: https://github.com/nodejs/docker-node/blob/master/6.10/wheezy/Dockerfile
 RUN groupadd -r node && useradd -r -g node node
 
 # gpg keys listed at https://github.com/nodejs/node
@@ -48,12 +48,13 @@ RUN set -ex \
     DD8F2338BAE7501E3DD5AC78C273792F7D83545D \
     B9AE9905FFD7803F25714661B63B535A4C206CA9 \
     C4F0DFFF4E8C1A8236409D08E73BC641CC11F4C8 \
+    56730D5401028683275BD23C23EFEFE93C4CFFFE \
   ; do \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.9.5
+ENV NODE_VERSION 6.10.0
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
