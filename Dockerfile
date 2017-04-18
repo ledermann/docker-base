@@ -14,7 +14,7 @@ ENV LC_ALL en_US.UTF-8
 
 # Install Nginx
 # Source: https://github.com/nginxinc/docker-nginx/blob/master/stable/jessie/Dockerfile
-ENV NGINX_VERSION 1.10.3-1~jessie
+ENV NGINX_VERSION 1.12.0-1~jessie
 
 RUN set -e; \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
