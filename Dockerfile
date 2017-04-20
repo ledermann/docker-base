@@ -13,8 +13,10 @@ RUN apt-get update && apt-get install -y locales && \
 ENV LC_ALL en_US.UTF-8
 
 # Install Nginx
-# Source: https://github.com/nginxinc/docker-nginx/blob/master/stable/jessie/Dockerfile
+# Based on https://github.com/nginxinc/docker-nginx/blob/master/stable/stretch/Dockerfile,
+# but adapted for Debian Jessie, because the Ruby image is using this
 ENV NGINX_VERSION 1.12.0-1~jessie
+ENV NJS_VERSION   1.12.0.0.1.10-1~jessie
 
 RUN set -e; \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
@@ -36,11 +38,10 @@ RUN echo "deb http://nginx.org/packages/debian/ jessie nginx" >> /etc/apt/source
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
 						ca-certificates \
 						nginx=${NGINX_VERSION} \
-						nginx-module-xslt \
-						nginx-module-geoip \
-						nginx-module-image-filter \
-						nginx-module-perl \
-						nginx-module-njs \
+						nginx-module-xslt=${NGINX_VERSION} \
+						nginx-module-geoip=${NGINX_VERSION} \
+						nginx-module-image-filter=${NGINX_VERSION} \
+						nginx-module-njs=${NJS_VERSION} \
 						gettext-base \
 	&& rm -rf /var/lib/apt/lists/*
 
