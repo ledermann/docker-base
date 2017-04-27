@@ -1,4 +1,5 @@
 FROM ruby:2.4.1
+LABEL maintainer="mail@georg-ledermann.de"
 
 # Set time zone
 ENV TZ=Europe/Berlin
