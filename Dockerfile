@@ -16,8 +16,8 @@ ENV LC_ALL en_US.UTF-8
 # Install Nginx
 # Based on https://github.com/nginxinc/docker-nginx/blob/master/stable/stretch/Dockerfile,
 # but adapted for Debian Jessie, because the Ruby image is using this
-ENV NGINX_VERSION 1.12.1-1~jessie
-ENV NJS_VERSION   1.12.1.0.1.10-1~jessie
+ENV NGINX_VERSION 1.12.2-1~jessie
+ENV NJS_VERSION   1.12.2.0.1.14-1~jessie
 
 RUN set -e; \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
