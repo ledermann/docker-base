@@ -51,7 +51,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
   	ln -sf /dev/stderr /var/log/nginx/error.log
 
 ## Install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs && \
     rm -rf /var/lib/apt/lists/*
 
