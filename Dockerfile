@@ -1,4 +1,4 @@
-FROM ruby:2.4
+FROM ruby:2.4-stretch
 LABEL maintainer="mail@georg-ledermann.de"
 
 # Set time zone
@@ -14,10 +14,9 @@ RUN apt-get update && apt-get install -y locales && \
 ENV LC_ALL en_US.UTF-8
 
 # Install Nginx
-# Based on https://github.com/nginxinc/docker-nginx/blob/master/stable/stretch/Dockerfile,
-# but adapted for Debian Jessie, because the Ruby image is using this
-ENV NGINX_VERSION 1.12.2-1~jessie
-ENV NJS_VERSION   1.12.2.0.1.14-1~jessie
+# Copied from https://github.com/nginxinc/docker-nginx/blob/master/stable/stretch/Dockerfile
+ENV NGINX_VERSION 1.12.2-1~stretch
+ENV NJS_VERSION   1.12.2.0.1.14-1~stretch
 
 RUN set -e; \
 	NGINX_GPGKEY=573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62; \
@@ -34,7 +33,7 @@ RUN set -e; \
 	test -z "$found" && echo >&2 "error: failed to fetch GPG key $NGINX_GPGKEY" && exit 1; \
 	exit 0
 
-RUN echo "deb http://nginx.org/packages/debian/ jessie nginx" >> /etc/apt/sources.list \
+RUN echo "deb http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list \
 	&& apt-get update \
 	&& apt-get install --no-install-recommends --no-install-suggests -y \
 						ca-certificates \
