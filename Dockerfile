@@ -1,4 +1,4 @@
-FROM ruby:2.4-stretch
+FROM ruby:2.5
 LABEL maintainer="mail@georg-ledermann.de"
 
 # Set time zone
